@@ -1,5 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-    while (!(input.buttonIsPressed(Button.B))) {
+    while (!(input.buttonIsPressed(Button.B) || input.buttonIsPressed(Button.AB))) {
         for (let B = 0; B <= 4; B++) {
             for (let A = 0; A <= 4; A++) {
                 if (list[B][A] == 1) {
@@ -22,7 +22,7 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 input.onButtonPressed(Button.B, function () {
-    while (!(input.buttonIsPressed(Button.A))) {
+    while (!(input.buttonIsPressed(Button.A) || input.buttonIsPressed(Button.AB))) {
         for (let B = 0; B <= 4; B++) {
             for (let A = 0; A <= 4; A++) {
                 if (list[A][B] == 1) {
