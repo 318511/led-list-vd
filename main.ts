@@ -1,14 +1,8 @@
-input.onPinPressed(TouchPin.P0, function () {
-    哈哈 = 3
-})
 input.onButtonPressed(Button.A, function () {
     哈哈 = 1
 })
 input.onButtonPressed(Button.B, function () {
     哈哈 = 2
-})
-input.onPinPressed(TouchPin.P1, function () {
-    哈哈 = 4
 })
 let n = 0
 let 哈哈 = 0
@@ -51,21 +45,39 @@ let list2 = [
 ]
 ]
 basic.forever(function () {
-	
-})
-basic.forever(function () {
-    for (let B3 = 0; B3 <= 4; B3++) {
-        for (let A3 = 0; A3 <= 4; A3++) {
-            if (list2[B3][A3] == 1) {
-                led.plotBrightness(B3, A3, light2)
-                light2 += n
-                if (light2 <= 0) {
-                    n = 5
-                } else if (light2 >= 255) {
-                    n = -5
+    if (哈哈 == 1) {
+        let list: number[][] = []
+        for (let B = 0; B <= 4; B++) {
+            for (let A = 0; A <= 4; A++) {
+                if (list2[B][A] == 1) {
+                    led.plotBrightness(B, A, light2)
+                    light2 += n
+                    if (light2 <= 0) {
+                        n = 5
+                    } else if (light2 >= 255) {
+                        n = -5
+                    }
+                } else {
+                    led.unplot(B, A)
                 }
-            } else {
-                led.unplot(B3, A3)
+            }
+        }
+        list2.unshift(list.pop())
+        basic.pause(100)
+    } else if (哈哈 == 2) {
+        for (let B = 0; B <= 4; B++) {
+            for (let A = 0; A <= 4; A++) {
+                if (list2[A][B] == 1) {
+                    led.plotBrightness(B, A, light2)
+                    light2 += n
+                    if (light2 <= 0) {
+                        n = 5
+                    } else if (light2 >= 255) {
+                        n = -5
+                    }
+                } else {
+                    led.unplot(B, A)
+                }
             }
         }
     }
