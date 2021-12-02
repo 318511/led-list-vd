@@ -45,40 +45,30 @@ let list2 = [
 ]
 ]
 basic.forever(function () {
-    if (哈哈 == 1) {
-        let list: number[][] = []
+    for (let A = 0; A <= 4; A++) {
         for (let B = 0; B <= 4; B++) {
-            for (let A = 0; A <= 4; A++) {
-                if (list2[B][A] == 1) {
-                    led.plotBrightness(B, A, light2)
-                    light2 += n
-                    if (light2 <= 0) {
-                        n = 5
-                    } else if (light2 >= 255) {
-                        n = -5
-                    }
-                } else {
-                    led.unplot(B, A)
+            if (list2[B][A] == 1) {
+                led.plotBrightness(B, A, light2)
+                light2 += n
+                if (light2 <= 0) {
+                    n = 5
+                } else if (light2 >= 255) {
+                    n = -5
                 }
+            } else {
+                led.unplot(B, A)
             }
         }
-        list2.unshift(list.pop())
+    }
+    if (哈哈 == 1) {
+        for (let B = 0; B <= 4; B++) {
+            list2.unshift(list2.pop())
+        }
         basic.pause(100)
     } else if (哈哈 == 2) {
         for (let B = 0; B <= 4; B++) {
-            for (let A = 0; A <= 4; A++) {
-                if (list2[A][B] == 1) {
-                    led.plotBrightness(B, A, light2)
-                    light2 += n
-                    if (light2 <= 0) {
-                        n = 5
-                    } else if (light2 >= 255) {
-                        n = -5
-                    }
-                } else {
-                    led.unplot(B, A)
-                }
-            }
+            list2.push(light2.shift())
         }
+        basic.pause(100)
     }
 })
